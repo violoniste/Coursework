@@ -48,4 +48,13 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
+
+    public String toStringWithoutDepartment() {
+        return "Employee{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+}
 }

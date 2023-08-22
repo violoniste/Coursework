@@ -102,8 +102,8 @@ public class EmployeeBook {
     }
 
     //    5. Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b).
-    public int getSalaryAverage() {
-        int sum = getSalarySum();
+    public float getSalaryAverage() {
+        float sum = getSalarySum();
         return sum / employees.length;
     }
 
@@ -125,11 +125,9 @@ public class EmployeeBook {
     public Employee getEmployeeWithMinSalary(int department) {
         Employee minEmployee = null;
         for (Employee employee : employees) {
-            if (employee.getDepartment() != department)
-                continue;
-
-            if (minEmployee == null || employee.getSalary() < minEmployee.getSalary())
+            if ((employee.getDepartment() == department) && (minEmployee == null || employee.getSalary() < minEmployee.getSalary())) {
                 minEmployee = employee;
+            }
         }
         return minEmployee;
     }
@@ -138,11 +136,9 @@ public class EmployeeBook {
     public Employee getEmployeeWithMaxSalary(int department) {
         Employee maxEmployee = null;
         for (Employee employee : employees) {
-            if (employee.getDepartment() != department)
-                continue;
-
-            if (maxEmployee == null || employee.getSalary() > maxEmployee.getSalary())
+            if ((employee.getDepartment() == department) && (maxEmployee == null || employee.getSalary() > maxEmployee.getSalary())) {
                 maxEmployee = employee;
+            }
         }
         return maxEmployee;
     }
@@ -159,8 +155,8 @@ public class EmployeeBook {
     }
 
     //    4. Среднюю зарплату по отделу (учесть, что количество людей в отделе отличается от employees.length).
-    public int getSalaryAverage(int department) {
-        int sum = 0;
+    public float getSalaryAverage(int department) {
+        float sum = 0;
         int count = 0;
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
@@ -169,7 +165,7 @@ public class EmployeeBook {
             }
         }
 
-        int average = 0;
+        float average = 0;
 
         if (count > 0)
             average = sum / count;
@@ -192,11 +188,7 @@ public class EmployeeBook {
 
         for (Employee employee : employees) {
             if (employee.getDepartment() == department) {
-                System.out.println("Employee{" +
-                        "id=" + employee.getId() +
-                        ", fullName='" + employee.getFullName() + '\'' +
-                        ", salary=" + employee.getSalary() +
-                        '}');
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }
@@ -207,10 +199,7 @@ public class EmployeeBook {
 
         for (Employee employee : employees) {
             if (employee.getSalary() < salary) {
-                System.out.println("Employee{" +
-                        "fullName='" + employee.getFullName() + '\'' +
-                        ", salary=" + employee.getSalary() +
-                        '}');
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }
@@ -221,10 +210,7 @@ public class EmployeeBook {
 
         for (Employee employee : employees) {
             if (employee.getSalary() >= salary) {
-                System.out.println("Employee{" +
-                        "fullName='" + employee.getFullName() + '\'' +
-                        ", salary=" + employee.getSalary() +
-                        '}');
+                System.out.println(employee.toStringWithoutDepartment());
             }
         }
     }

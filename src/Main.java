@@ -14,7 +14,7 @@ public class Main {
         book.addEmployee("Фундук Петрович Задорожный", 2, 7000);
         book.addEmployee("Вальдемар Иванович Романовский", 1, 300000);
 
-        book.printAllEmployeesByDepartments();
+        book.printEmployeesWithSalaryMore(2000);
     }
 
 }
